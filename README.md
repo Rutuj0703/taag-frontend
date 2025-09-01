@@ -1,36 +1,107 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Taag Media Frontend Assignment
 
-## Getting Started
+## Overview
+A responsive Next.js application for brand-creator matching and billing flow.
 
-First, run the development server:
+## Features
+- **Brand Brief Form**: Collect campaign details with pre-filled templates
+- **Match Console**: Display ranked creators with scoring and filters
+- **Billing Flow**: Two-step process for brand billing and creator payout
 
+## Setup Instructions
+
+1. **Install dependencies:**
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. **Run development server:**
+```bash
+npm run dev
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. **Open browser:**
+Navigate to `http://localhost:3000`
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Build for Production
 
-## Learn More
+```bash
+npm run build
+npm start
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Deployment
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Vercel (Recommended)
+1. Push code to GitHub
+2. Connect repository to Vercel
+3. Deploy automatically
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Manual Deployment
+```bash
+npm run build
+npm run export  # for static export
+```
 
-## Deploy on Vercel
+## Project Structure
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+app/
+├── components/
+│   ├── BrandBriefForm.tsx
+│   ├── MatchConsole.tsx
+│   └── BillingFlow.tsx
+├── types.ts
+├── layout.tsx
+├── page.tsx
+└── globals.css
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Key Features Implemented
+
+### 1. Brand Brief Form
+- Form validation with React Hook Form
+- Pre-filled templates for quick setup
+- Responsive design for mobile/desktop
+
+### 2. Match Console
+- Creator scoring algorithm (Relevance 40%, Audience 30%, Performance 20%, Platform 10%)
+- Interactive score bars and reason chips
+- Filtering by score, price, platform, vertical
+
+### 3. Billing & Payout Flow
+- Two-tab stepper with validation
+- GSTIN, PAN, IFSC validation with regex
+- GST calculation (18%)
+- Download/print summary functionality
+
+## Validation Rules
+- **GSTIN**: `22AAAAA0000A1Z5` format
+- **PAN**: `ABCDE1234F` format  
+- **IFSC**: `HDFC0001234` format
+- **UPI**: `user@paytm` format
+- **Phone**: 10-digit number
+
+## Technologies Used
+- **Framework**: Next.js 14 with App Router
+- **Styling**: Tailwind CSS
+- **Forms**: React Hook Form + Zod validation
+- **Icons**: Lucide React
+- **TypeScript**: Full type safety
+
+## Assumptions Made
+1. Sample creator data used for matching algorithm
+2. Simplified scoring logic for demonstration
+3. GST rate fixed at 18%
+4. No real payment integration
+5. Client-side validation only
+
+## Mobile Responsiveness
+- Responsive grid layouts
+- Mobile-optimized forms
+- Touch-friendly buttons and inputs
+- Collapsible filters on mobile
+
+## Browser Support
+- Modern browsers (Chrome, Firefox, Safari, Edge)
+- ES2017+ features used
